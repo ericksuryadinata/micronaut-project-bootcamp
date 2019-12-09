@@ -7,7 +7,6 @@ import com.google.gson.*;
 import java.util.HashMap;
 import java.util.List;
 
-
 import praxis.religi.command.LoginCommand;
 import praxis.religi.repository.AuthRepositoryInf;
 import praxis.religi.model.User;
@@ -17,7 +16,7 @@ public class AuthController {
 
     private AuthRepositoryInf authRepositoryInf;
 
-    AuthController(AuthRepositoryInf authRepositoryInf){
+    AuthController(AuthRepositoryInf authRepositoryInf) {
         this.authRepositoryInf = authRepositoryInf;
     }
 
@@ -62,6 +61,12 @@ public class AuthController {
         // database
         // kalau ada sukses login
         // kalau tidak ada register / masukkan data tersebut ke database
+
+        /**
+         * HASIL COPY PASTE DARI
+         * https://guides.micronaut.io/micronaut-oauth2-oidc-google/guide/index.html
+         */
+
         HashMap<String, Object> data = new HashMap<>();
         data.put("status", "sukses");
         return (new Gson()).toJson(data);
@@ -82,9 +87,24 @@ public class AuthController {
     @Post("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String register() {
+    public String register(@Body User user) {
         HashMap<String, Object> data = new HashMap<>();
-        data.put("status", "sukses");
-        return (new Gson()).toJson(data);
+        // cek email, apakah sudah ada di database
+        Boolean isExistEmail = authRepositoryInf.checkExistEmail(user.getEmail());
+        if(isExistEmail){
+            data.put("status", "gagal menyimpan");
+            data.put("pesan", "email " + user.getEmail() + " sudah ada");
+            return (new Gson()).toJson(data);
+        }else{
+            try {
+                User result = authRepositoryInf.save(user);
+                data.put("status", "sukses");
+                data.put("new_user", result);
+                return (new Gson()).toJson(data);
+            } catch (Exception e) {
+                data.put("status", "gagal menyimpan");
+                return (new Gson()).toJson(data);
+            }
+        }
     }
 }

@@ -9,6 +9,10 @@ import praxis.religi.model.User;
 public interface AuthRepositoryInf {
 
     User login(@NotNull String email, @NotNull String password);
+    
+    User save(User user);
 
     List<User> findAll();
+
+    Boolean checkExistEmail(@NotNull String email);
 }
