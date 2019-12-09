@@ -25,6 +25,8 @@ datasources:
     password: root
 jpa:
   default:
+    packages-to-scan:
+      - 'praxis.religi.model'
     properties:
       hibernate:
         hbm2ddl:

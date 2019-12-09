@@ -7,6 +7,7 @@ import com.google.gson.*;
 import java.util.HashMap;
 import java.util.List;
 
+
 import praxis.religi.command.LoginCommand;
 import praxis.religi.repository.AuthRepositoryInf;
 import praxis.religi.model.User;
@@ -14,16 +15,16 @@ import praxis.religi.model.User;
 @Controller("/auth")
 public class AuthController {
 
-    private AuthRepositoryInf repository;
+    protected final AuthRepositoryInf authRepositoryInf;
 
-    AuthController(AuthRepositoryInf r) {
-        this.repository = r;
+    public AuthController(AuthRepositoryInf authRepositoryInf){
+        this.authRepositoryInf = authRepositoryInf;
     }
 
     @Get("/")
     @Produces(MediaType.APPLICATION_JSON)
     public String index() {
-        List<User> user = repository.findAll();
+        List<User> user = authRepositoryInf.findAll();
         HashMap<String, Object> data = new HashMap<>();
         data.put("status", "sukses");
         data.put("user", user);
@@ -39,7 +40,7 @@ public class AuthController {
         HashMap<String, Object> data = new HashMap<>();
 
         try { // kalau ada user nya
-            User user = repository.login(command.getEmail(), command.getPassword());
+            User user = authRepositoryInf.login(command.getEmail(), command.getPassword());
             data.put("status", "sukses");
             data.put("user", user);
             return (new Gson()).toJson(data);

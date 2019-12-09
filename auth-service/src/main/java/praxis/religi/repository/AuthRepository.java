@@ -17,17 +17,17 @@ import praxis.religi.model.User;
 public class AuthRepository implements AuthRepositoryInf {
 
     @PersistenceContext
-    private EntityManager manager;
+    private EntityManager entityManager;
 
-    AuthRepository(@CurrentSession EntityManager manager) {
-        this.manager = manager;
+    public AuthRepository(@CurrentSession EntityManager entityManager){
+        this.entityManager = entityManager;
     }
 
     @Override
     @Transactional(readOnly = true)
     public User login(@NotNull String email, @NotNull String password) {
         String queryString = "SELECT user FROM User user WHERE user.email = :email and user.password = :password";
-        TypedQuery<User> query = manager.createQuery(queryString, User.class);
+        TypedQuery<User> query = entityManager.createQuery(queryString, User.class);
         query.setParameter("email", email);
         query.setParameter("password", password);
         
@@ -38,7 +38,7 @@ public class AuthRepository implements AuthRepositoryInf {
     @Transactional(readOnly = true)
     public List<User> findAll() {
         String queryString = "SELECT user FROM User user";
-        TypedQuery<User> query = manager.createQuery(queryString, User.class);
+        TypedQuery<User> query = entityManager.createQuery(queryString, User.class);
         return query.getResultList();
     }
 }
