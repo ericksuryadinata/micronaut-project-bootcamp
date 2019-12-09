@@ -15,9 +15,9 @@ import praxis.religi.model.User;
 @Controller("/auth")
 public class AuthController {
 
-    protected final AuthRepositoryInf authRepositoryInf;
+    private AuthRepositoryInf authRepositoryInf;
 
-    public AuthController(AuthRepositoryInf authRepositoryInf){
+    AuthController(AuthRepositoryInf authRepositoryInf){
         this.authRepositoryInf = authRepositoryInf;
     }
 

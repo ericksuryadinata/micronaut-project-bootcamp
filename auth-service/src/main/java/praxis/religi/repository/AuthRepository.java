@@ -19,7 +19,7 @@ public class AuthRepository implements AuthRepositoryInf {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public AuthRepository(@CurrentSession EntityManager entityManager){
+    AuthRepository(@CurrentSession EntityManager entityManager){
         this.entityManager = entityManager;
     }
 
