@@ -1,0 +1,140 @@
+I191202 13:14:18.835524 1 util/log/clog.go:1196  [config] file created at: 2019/12/02 13:14:18
+I191202 13:14:18.835524 1 util/log/clog.go:1196  [config] running on machine: DESKTOP-U6UPKGJ
+I191202 13:14:18.835524 1 util/log/clog.go:1196  [config] binary: CockroachDB CCL v19.2.0 (x86_64-w64-mingw32, built 2019/11/12 05:23:23, go1.12.12)
+I191202 13:14:18.835524 1 util/log/clog.go:1196  [config] arguments: [cockroach start-single-node --insecure]
+I191202 13:14:18.835524 1 util/log/clog.go:1196  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+I191202 13:14:18.826512 1 cli/start.go:1138  logging to directory E:\Praxis-Bootcamp\pertemuan\minggu-5\micronaut-crud\databases\cockroach-data\logs
+W191202 13:14:18.948318 1 cli/start.go:1176  RUNNING IN INSECURE MODE!
+
+- Your cluster is open for any client that can access <all your IP addresses>.
+- Any user, even root, can log in without providing a password.
+- Any user, connecting as root, can read or write any data in your cluster.
+- There is no network encryption nor authentication, and thus no confidentiality.
+
+Check out how to secure your cluster: https://www.cockroachlabs.com/docs/v19.2/secure-a-cluster.html
+W191202 13:14:19.004783 1 cli/start.go:1046  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=.25 (1011 MiB).
+W191202 13:14:19.005022 1 cli/start.go:1059  Using the default setting for --max-sql-memory (128 MiB).
+  A significantly larger value is usually needed in production.
+  If you have a dedicated server a reasonable setting is --max-sql-memory=.25 (1011 MiB).
+I191202 13:14:19.005127 1 cli/start.go:1190  CockroachDB CCL v19.2.0 (x86_64-w64-mingw32, built 2019/11/12 05:23:23, go1.12.12)
+I191202 13:14:19.799723 1 server/config.go:394  system total memory: 3.9 GiB
+I191202 13:14:19.806253 1 server/config.go:396  server configuration:
+max offset             500000000
+cache size             128 MiB
+SQL memory pool size   128 MiB
+scan interval          10m0s
+scan min idle time     10ms
+scan max idle time     1s
+event log enabled      true
+I191202 13:14:19.806431 1 cli/start.go:1031  process identity: uid S-1-5-21-2449740816-3576412861-2486932756-1001, gid S-1-5-21-2449740816-3576412861-2486932756-513
+E191202 13:14:19.807930 1 cli/start.go:1014  unable to load named time zones, time zone support will be degraded.
+Hint: check that the time zone database is installed on your system, or
+set the ZONEINFO environment variable to a Go time zone .zip archive.
+I191202 13:14:19.818194 1 cli/start.go:638  starting cockroach node
+I191202 13:14:20.865465 27 storage/engine/rocksdb.go:621  opening rocksdb instance at "E:\\Praxis-Bootcamp\\pertemuan\\minggu-5\\micronaut-crud\\databases\\cockroach-data\\cockroach-temp737081035"
+I191202 13:14:23.900696 27 server/server.go:927  [n?] monitoring forward clock jumps based on server.clock.forward_jump_check_enabled
+I191202 13:14:24.156543 27 storage/engine/rocksdb.go:621  opening rocksdb instance at "E:\\Praxis-Bootcamp\\pertemuan\\minggu-5\\micronaut-crud\\databases\\cockroach-data"
+I191202 13:14:26.178497 27 server/config.go:502  [n?] 1 storage engine initialized
+I191202 13:14:26.178545 27 server/config.go:505  [n?] RocksDB cache size: 128 MiB
+I191202 13:14:26.178566 27 server/config.go:505  [n?] store 0: RocksDB, max size 0 B, max open file limit 10000
+W191202 13:14:26.466879 27 cli/start.go:990  neither --listen-addr nor --advertise-addr was specified.
+The server will advertise "DESKTOP-U6UPKGJ" to other nodes, is this routable?
+
+Consider using:
+- for local-only servers:  --listen-addr=localhost
+- for multi-node clusters: --advertise-addr=<host/IP addr>
+I191202 13:14:26.877303 27 gossip/gossip.go:394  [n1] NodeDescriptor set to node_id:1 address:<network_field:"tcp" address_field:"DESKTOP-U6UPKGJ:26257" > attrs:<> locality:<> ServerVersion:<major_val:19 minor_val:2 patch:0 unstable:0 > build_tag:"v19.2.0" started_at:1575292466762752200 cluster_name:"" sql_address:<network_field:"tcp" address_field:"DESKTOP-U6UPKGJ:26257" > 
+W191202 13:14:27.597397 161 storage/replica_range_lease.go:554  can't determine lease status due to node liveness error: node not in the liveness table
+github.com/cockroachdb/cockroach/pkg/storage.init.ializers
+	/go/src/github.com/cockroachdb/cockroach/pkg/storage/node_liveness.go:44
+runtime.main
+	/usr/local/go/src/runtime/proc.go:188
+runtime.goexit
+	/usr/local/go/src/runtime/asm_amd64.s:1337
+W191202 13:14:27.605641 161 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+W191202 13:14:27.663939 161 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+W191202 13:14:27.765980 161 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+I191202 13:14:27.837145 27 server/node.go:431  [n1] initialized store [n1,s1]: disk (capacity=297 GiB, available=293 GiB, used=835 KiB, logicalBytes=9.0 MiB), ranges=25, leases=0, queries=0.00, writes=0.00, bytesPerReplica={p10=0.00 p25=0.00 p50=146.00 p75=1760.00 p90=11971.00 pMax=9360165.00}, writesPerReplica={p10=0.00 p25=0.00 p50=0.00 p75=0.00 p90=0.00 pMax=0.00}
+I191202 13:14:27.991310 27 storage/stores.go:240  [n1] read 0 node addresses from persistent storage
+W191202 13:14:27.991641 161 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+I191202 13:14:27.992000 27 server/node.go:645  [n1] connecting to gossip network to verify cluster ID...
+I191202 13:14:27.992081 27 server/node.go:665  [n1] node connected via gossip and verified as part of cluster "47eae165-4b47-489e-9e79-f732f82f2bad"
+I191202 13:14:27.992490 27 server/node.go:512  [n1] node=1: started with [<no-attributes>=E:\Praxis-Bootcamp\pertemuan\minggu-5\micronaut-crud\databases\cockroach-data] engine(s) and attributes []
+I191202 13:14:28.105873 27 server/server.go:1513  [n1] starting http server at [::]:8080 (use: DESKTOP-U6UPKGJ:8080)
+I191202 13:14:28.105950 27 server/server.go:1520  [n1] starting grpc/postgres server at [::]:26257
+I191202 13:14:28.106009 27 server/server.go:1521  [n1] advertising CockroachDB node at DESKTOP-U6UPKGJ:26257
+W191202 13:14:28.466909 161 storage/store.go:1530  [n1,s1,r6/1:/Table/{SystemCon…-11}] could not gossip system config: [NotLeaseHolderError] r6: replica (n1,s1):1 not lease holder; lease holder unknown
+W191202 13:14:29.292222 189 storage/node_liveness.go:559  [n1,liveness-hb] slow heartbeat took 1.2s
+I191202 13:14:29.292316 189 storage/node_liveness.go:474  [n1,liveness-hb] heartbeat failed on epoch increment; retrying
+I191202 13:14:29.580860 189 storage/node_liveness.go:474  [n1,liveness-hb] heartbeat failed on epoch increment; retrying
+I191202 13:14:30.780183 101 gossip/gossip.go:1531  [n1] node has connected to cluster via gossip
+I191202 13:14:30.916292 101 storage/stores.go:259  [n1] wrote 0 node addresses to persistent storage
+I191202 13:14:34.631876 323 sql/event_log.go:130  [n1,intExec=add-constraints-ttl] Event: "set_zone_config", target: 25, info: {Target:TABLE system.public.replication_constraint_stats Config: Options:"gc.ttlseconds" = 600 User:root}
+I191202 13:14:35.932207 315 sql/event_log.go:130  [n1,intExec=add-replication-status-ttl] Event: "set_zone_config", target: 27, info: {Target:TABLE system.public.replication_stats Config: Options:"gc.ttlseconds" = 600 User:root}
+I191202 13:14:36.332032 333 sql/sqlbase/structured.go:1516  [n1,intExec=update-reports-meta-generated] publish: descID=28 (reports_meta) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I191202 13:14:37.121335 333 sql/event_log.go:130  [n1,intExec=update-reports-meta-generated] Event: "alter_table", target: 28, info: {TableName:system.public.reports_meta Statement:ALTER TABLE system.reports_meta ALTER COLUMN generated SET DATA TYPE TIMESTAMPTZ User:node MutationID:0 CascadeDroppedViews:[]}
+I191202 13:14:37.244892 563 sql/sqlbase/structured.go:1516  [n1,intExec=update-reports-meta-generated] publish: descID=25 (replication_constraint_stats) version=2 mtime=1970-01-01 00:00:00 +0000 UTC
+I191202 13:14:37.443878 563 sql/event_log.go:130  [n1,intExec=update-reports-meta-generated] Event: "alter_table", target: 25, info: {TableName:system.public.replication_constraint_stats Statement:ALTER TABLE system.replication_constraint_stats ALTER COLUMN violation_start SET DATA TYPE TIMESTAMPTZ User:node MutationID:0 CascadeDroppedViews:[]}
+I191202 13:14:37.965195 27 server/server.go:1589  [n1] done ensuring all necessary migrations have run
+I191202 13:14:38.060262 27 server/server.go:1840  [n1] serving sql connections
+I191202 13:14:38.150563 27 cli/start.go:797  [config] clusterID: 47eae165-4b47-489e-9e79-f732f82f2bad
+W191202 13:14:38.150743 184 server/status/runtime.go:420  [n1] unable to get file descriptor usage (will not try again): not implemented on windows
+I191202 13:14:38.167861 643 server/server_update.go:53  [n1] no need to upgrade, cluster already at the newest version
+I191202 13:14:38.168008 27 cli/start.go:806  node startup completed:
+CockroachDB node starting at 2019-12-02 13:14:38.1389388 +0000 UTC (took 19.5s)
+build:               CCL v19.2.0 @ 2019/11/12 05:23:23 (go1.12.12)
+webui:               http://DESKTOP-U6UPKGJ:8080
+sql:                 postgresql://root@DESKTOP-U6UPKGJ:26257?sslmode=disable
+RPC client flags:    cockroach <client cmd> --host=DESKTOP-U6UPKGJ:26257 --insecure
+logs:                E:\Praxis-Bootcamp\pertemuan\minggu-5\micronaut-crud\databases\cockroach-data\logs
+temp dir:            E:\Praxis-Bootcamp\pertemuan\minggu-5\micronaut-crud\databases\cockroach-data\cockroach-temp737081035
+external I/O path:   E:\Praxis-Bootcamp\pertemuan\minggu-5\micronaut-crud\databases\cockroach-data\extern
+store[0]:            path=E:\Praxis-Bootcamp\pertemuan\minggu-5\micronaut-crud\databases\cockroach-data
+status:              restarted pre-existing node
+clusterID:           47eae165-4b47-489e-9e79-f732f82f2bad
+nodeID:              1
+I191202 13:14:38.531256 552 sql/lease.go:1908  released orphaned table lease: {id:23 version:1 expiration:{Time:{wall:14980000 ext:63710889174 loc:<nil>}}}
+I191202 13:14:38.710517 184 server/status/runtime.go:498  [n1] runtime stats: 77 MiB RSS, 137 goroutines, 76 MiB/12 MiB/102 MiB GO alloc/idle/total, 14 MiB/17 MiB CGO alloc/total, 0.0 CGO/sec, 0.0/0.0 %(u/s)time, 0.0 %gc (10x), 864 B/702 B (r/w)net
+I191202 13:14:38.743460 553 sql/lease.go:1908  released orphaned table lease: {id:53 version:1 expiration:{Time:{wall:632288000 ext:63710889171 loc:<nil>}}}
+I191202 13:14:38.932549 645 sql/event_log.go:130  [n1] Event: "node_restart", target: 1, info: {Descriptor:{NodeID:1 Address:DESKTOP-U6UPKGJ:26257 Attrs: Locality: ServerVersion:19.2 BuildTag:v19.2.0 StartedAt:1575292466762752200 LocalityAddress:[] ClusterName: SQLAddress:DESKTOP-U6UPKGJ:26257} ClusterID:47eae165-4b47-489e-9e79-f732f82f2bad StartedAt:1575292466762752200 LastUp:1575292092182406400}
+I191202 13:14:45.698371 551 server/updates.go:267  [n1] A new version is available: 19.2.1, details: https://www.cockroachlabs.com/docs/releases/v19.2.1.html
+I191202 13:14:47.998100 179 storage/store.go:2364  [n1,s1] sstables (read amplification = 1):
+6 [ 357K 1 ]: 357K
+I191202 13:14:48.155898 179 storage/store.go:2365  [n1,s1] 
+** Compaction Stats [default] **
+Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  L0      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   1.0      0.0      0.2      0.40              0.00         1    0.399       0      0
+  L6      1/0   356.63 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.7      1.6      1.1      0.31              0.00         1    0.309    9427   6047
+ Sum      1/0   356.63 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   5.9      0.7      0.6      0.71              0.00         2    0.354    9427   6047
+ Int      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   5.9      0.7      0.6      0.71              0.00         2    0.354    9427   6047
+
+** Compaction Stats [default] **
+Priority    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Low      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      1.6      1.1      0.31              0.00         1    0.309    9427   6047
+User      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.2      0.40              0.00         1    0.399       0      0
+Uptime(secs): 23.4 total, 23.4 interval
+Flush(GB): cumulative 0.000, interval 0.000
+AddFile(GB): cumulative 0.000, interval 0.000
+AddFile(Total Files): cumulative 0, interval 0
+AddFile(L0 Files): cumulative 0, interval 0
+AddFile(Keys): cumulative 0, interval 0
+Cumulative compaction: 0.00 GB write, 0.02 MB/s write, 0.00 GB read, 0.02 MB/s read, 0.7 seconds
+Interval compaction: 0.00 GB write, 0.02 MB/s write, 0.00 GB read, 0.02 MB/s read, 0.7 seconds
+Stalls(count): 0 level0_slowdown, 0 level0_slowdown_with_compaction, 0 level0_numfiles, 0 level0_numfiles_with_compaction, 0 stop for pending_compaction_bytes, 0 slowdown for pending_compaction_bytes, 0 memtable_compaction, 0 memtable_slowdown, interval 0 total count
+estimated_pending_compaction_bytes: 0 B
+I191202 13:14:48.455249 184 server/status/runtime.go:498  [n1] runtime stats: 85 MiB RSS, 135 goroutines, 88 MiB/1.4 MiB/102 MiB GO alloc/idle/total, 15 MiB/18 MiB CGO alloc/total, 829.5 CGO/sec, 3.0/3.2 %(u/s)time, 0.0 %gc (0x), 7.8 KiB/4.2 KiB (r/w)net
+I191202 13:14:58.463578 184 server/status/runtime.go:498  [n1] runtime stats: 93 MiB RSS, 132 goroutines, 97 MiB/784 KiB/110 MiB GO alloc/idle/total, 15 MiB/18 MiB CGO alloc/total, 996.3 CGO/sec, 1.4/0.8 %(u/s)time, 0.0 %gc (0x), 36 KiB/18 KiB (r/w)net
+I191202 13:14:59.429065 1 cli/start.go:859  received signal 'interrupt'
+I191202 13:14:59.533152 1 cli/start.go:924  initiating graceful shutdown of server
+I191202 13:14:59.901215 978 util/stop/stopper.go:542  [server drain process] quiescing; tasks left:
+1      [async] intent_resolver_ir_batcher
+1      [async] intent_resolver_gc_batcher
+1      [async] closedts-rangefeed-subscriber
+I191202 13:15:00.053596 978 storage/engine/rocksdb.go:761  closing rocksdb instance at "E:\\Praxis-Bootcamp\\pertemuan\\minggu-5\\micronaut-crud\\databases\\cockroach-data\\cockroach-temp737081035"
+I191202 13:15:00.552122 978 storage/engine/rocksdb.go:761  closing rocksdb instance at "E:\\Praxis-Bootcamp\\pertemuan\\minggu-5\\micronaut-crud\\databases\\cockroach-data"
+I191202 13:15:01.169662 1 cli/start.go:970  server drained and shutdown completed
+E191202 13:15:01.430866 1 cli/error.go:233  interrupted

@@ -1,0 +1,45 @@
+micronaut:
+  application:
+    name: auth-service
+  server:
+    port: 9090
+  # security:
+  #   enabled: true
+  #   oauth2:
+  #     enabled: true
+  #     clients:
+  #       google:
+  #         client-id: '${OAUTH_CLIENT_ID}'
+  #         client-secret: '${OAUTH_CLIENT_SECRET}'
+  #         openid:
+  #           issuer: 'https://accounts.google.com'
+  #   token:
+  #     jwt:
+  #       enabled: true
+  #       cookie:
+  #         enabled: true
+  #       signatures:
+  #         secret:
+  #           generator:
+  #             secret: pleaseChangeThisSecretForANewOne
+  #   endpoints:
+  #     logout:
+  #       enabled: true
+  #       get-allowed: true
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:26257/eventreligi
+    driverClassName: org.postgresql.Driver
+    username: root
+    password: root
+jpa:
+  default:
+    packages-to-scan:
+      - "praxis.eventreligi.app.model"
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
+        jdbc:
+          time_zone: Asia/Bangkok
