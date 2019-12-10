@@ -34,22 +34,22 @@ public class AuthController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String login(@Body LoginCommand command) {
-        // TODO : membuat login yang menggunakan hash password, sekarang masih plain
-        // text
+        // TODO : membuat JWT result untuk api_token, digunakan buat aplikasi android
+
         HashMap<String, Object> data = new HashMap<>();
         // untuk mencegah error saat runtime, kita gunakan try catch
         try {
             Boolean isExistEmail = authRepositoryInf.checkExistEmail(command.getEmail());
-            if(isExistEmail){
+            if (isExistEmail) {
                 User user = authRepositoryInf.login(command.getEmail(), command.getPassword());
-                if(user == null){
+                if (user == null) {
                     data.put("status", "gagal");
                     data.put("pesan", "password salah");
-                }else{
+                } else {
                     data.put("status", "sukses");
                     data.put("user", user);
                 }
-            }else{
+            } else {
                 data.put("status", "gagal");
                 data.put("pesan", "user tidak ada");
             }
@@ -104,11 +104,11 @@ public class AuthController {
         HashMap<String, Object> data = new HashMap<>();
         // cek email, apakah sudah ada di database
         Boolean isExistEmail = authRepositoryInf.checkExistEmail(user.getEmail());
-        if(isExistEmail){
+        if (isExistEmail) {
             data.put("status", "gagal");
             data.put("pesan", "email " + user.getEmail() + " sudah ada");
             return (new Gson()).toJson(data);
-        }else{
+        } else {
             try {
                 User result = authRepositoryInf.save(user);
                 data.put("status", "sukses");
