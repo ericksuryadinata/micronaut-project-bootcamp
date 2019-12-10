@@ -37,15 +37,28 @@ public class AuthController {
         // TODO : membuat login yang menggunakan hash password, sekarang masih plain
         // text
         HashMap<String, Object> data = new HashMap<>();
+        // untuk mencegah error saat runtime, kita gunakan try catch
+        try {
+            Boolean isExistEmail = authRepositoryInf.checkExistEmail(command.getEmail());
+            if(isExistEmail){
+                User user = authRepositoryInf.login(command.getEmail(), command.getPassword());
+                if(user == null){
+                    data.put("status", "gagal");
+                    data.put("pesan", "password salah");
+                }else{
+                    data.put("status", "sukses");
+                    data.put("user", user);
+                }
+            }else{
+                data.put("status", "gagal");
+                data.put("pesan", "user tidak ada");
+            }
 
-        try { // kalau ada user nya
-            User user = authRepositoryInf.login(command.getEmail(), command.getPassword());
-            data.put("status", "sukses");
-            data.put("user", user);
             return (new Gson()).toJson(data);
-        } catch (Exception e) { // ini gak ada usernya
-            data.put("status", "sukses");
-            data.put("user", "tidak ada user");
+        } catch (Exception e) {
+            // error masuk sini
+            data.put("status", "gagal");
+            data.put("pesan", "terjadi error " + e.getMessage());
             return (new Gson()).toJson(data);
         }
     }
@@ -92,7 +105,7 @@ public class AuthController {
         // cek email, apakah sudah ada di database
         Boolean isExistEmail = authRepositoryInf.checkExistEmail(user.getEmail());
         if(isExistEmail){
-            data.put("status", "gagal menyimpan");
+            data.put("status", "gagal");
             data.put("pesan", "email " + user.getEmail() + " sudah ada");
             return (new Gson()).toJson(data);
         }else{
@@ -102,7 +115,7 @@ public class AuthController {
                 data.put("new_user", result);
                 return (new Gson()).toJson(data);
             } catch (Exception e) {
-                data.put("status", "gagal menyimpan");
+                data.put("status", "gagal");
                 return (new Gson()).toJson(data);
             }
         }

@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import io.micronaut.configuration.hibernate.jpa.scope.CurrentSession;
 import io.micronaut.spring.tx.annotation.Transactional;
 import praxis.religi.model.User;
@@ -25,12 +26,17 @@ public class AuthRepository implements AuthRepositoryInf {
     @Override
     @Transactional(readOnly = true)
     public User login(@NotNull String email, @NotNull String password) {
-        String queryString = "SELECT user FROM User user WHERE user.email = :email and user.password = :password";
+        String queryString = "SELECT user FROM User user WHERE user.email = :email";
         TypedQuery<User> query = entityManager.createQuery(queryString, User.class);
         query.setParameter("email", email);
-        query.setParameter("password", password);
-        
-        return query.getSingleResult();
+        User user = query.getSingleResult();
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+        if(result.verified){
+            return user;
+        }else{
+            user = null;
+            return user;
+        }
     }
 
     @Override
@@ -46,6 +52,9 @@ public class AuthRepository implements AuthRepositoryInf {
     public User save(User user){
         user.setId(null);
         // set password here
+        String passwordFromUser = user.getPassword();
+        String hashedPassword = BCrypt.withDefaults().hashToString(12, passwordFromUser.toCharArray());
+        user.setPassword(hashedPassword);
         entityManager.persist(user);
         return user;
     }
