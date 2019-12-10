@@ -2,6 +2,7 @@ micronaut:
   application:
     name: auth-service
   server:
+    host: 127.0.0.1
     port: 9090
   # security:
   #   enabled: true
