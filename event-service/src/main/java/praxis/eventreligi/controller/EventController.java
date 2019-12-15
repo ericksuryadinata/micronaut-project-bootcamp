@@ -15,7 +15,6 @@ import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Produces;
 import io.micronaut.http.annotation.Put;
 import io.micronaut.http.annotation.QueryValue;
-import io.micronaut.http.HttpStatus;
 import io.micronaut.http.MediaType;
 import com.google.gson.*;
 
@@ -68,6 +67,7 @@ public class EventController {
         }
         return (new Gson()).toJson(data);
     }
+
     @Delete("/cancel/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String cancel(@PathVariable int id){
@@ -80,6 +80,7 @@ public class EventController {
         }
         return (new Gson()).toJson(data);
     }
+    
     @Get("/read/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String read(@PathVariable int id){

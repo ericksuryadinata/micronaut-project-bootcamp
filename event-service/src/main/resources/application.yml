@@ -35,7 +35,7 @@ datasources:
 jpa:
   default:
     packages-to-scan:
-      - "praxis.eventreligi.app.model"
+      - "praxis.eventreligi.model"
     properties:
       hibernate:
         hbm2ddl:

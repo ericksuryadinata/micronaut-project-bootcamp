@@ -12,7 +12,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "event")
 public class Event implements Serializable {
-    private static final long serialVersionsUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     @Column(name = "id")
     @NotNull
