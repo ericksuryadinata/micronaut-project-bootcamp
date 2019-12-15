@@ -31,15 +31,26 @@ dependencies {
     implementation "io.micronaut:micronaut-http-server-netty"
     implementation "io.micronaut:micronaut-http-client"
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
+    // tambahan buat koneksi database dan response JSON
+    runtime "org.postgresql:postgresql:9.3-1100-jdbc4"
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "io.micronaut.configuration:micronaut-hibernate-jpa"
+    implementation "io.micronaut.configuration:micronaut-jdbc-tomcat"
+
+    // tambahan buat login by google dibuat nanti
+    annotationProcessor "io.micronaut:micronaut-security"
+    implementation "io.micronaut:micronaut-security-jwt"
+    implementation "io.micronaut.configuration:micronaut-security-oauth2"
+
+    // tambahan buat salt password
+    implementation 'at.favre.lib:bcrypt:0.9.0'
+    
     testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
     testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testImplementation "io.micronaut.test:micronaut-test-junit5"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
-    implementation "io.micronaut:micronaut-security-jwt"
-    runtime "org.postgresql:postgresql:9.3-1100-jdbc4"
-    implementation 'com.google.code.gson:gson:2.8.5'
 }
 
 test.classpath += configurations.developmentOnly
