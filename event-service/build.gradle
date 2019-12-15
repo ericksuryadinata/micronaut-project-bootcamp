@@ -7,7 +7,7 @@ plugins {
 
 
 version "0.1"
-group "praxis.eventreligi.app"
+group "praxis.eventreligi"
 
 repositories {
     mavenCentral()
@@ -20,7 +20,7 @@ configurations {
 }
 
 dependencies {
-    annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+ annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
     annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor "io.micronaut:micronaut-validation"
     implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
@@ -55,20 +55,22 @@ dependencies {
 
     //ini untuk jwt
     implementation 'com.auth0:java-jwt:3.8.3'
-
 }
 
 test.classpath += configurations.developmentOnly
 
-mainClassName = "praxis.eventreligi.app.Application"
+mainClassName = "praxis.eventreligi.Application"
+
 // use JUnit 5 platform
 test {
     useJUnitPlatform()
 }
+
 tasks.withType(JavaCompile){
     options.encoding = "UTF-8"
     options.compilerArgs.add('-parameters')
 }
+
 
 shadowJar {
     mergeServiceFiles()

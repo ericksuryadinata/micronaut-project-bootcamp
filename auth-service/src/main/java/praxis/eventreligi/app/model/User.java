@@ -45,6 +45,9 @@ public class User implements Serializable {
     @Column(name = "is_active")
     private int isActive;
 
+    @Column(name = "api_token")
+    private String apiToken;
+
     public Long getId() {
         return id;
     }
@@ -107,5 +110,13 @@ public class User implements Serializable {
 
     public void setIsActive(int isActive) {
         this.isActive = isActive;
+    }
+
+    public String getApiToken() {
+        return apiToken;
+    }
+
+    public void setApiToken(String apiToken) {
+        this.apiToken = apiToken;
     }
 }

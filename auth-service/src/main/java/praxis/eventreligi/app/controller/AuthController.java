@@ -11,18 +11,17 @@ import praxis.eventreligi.app.command.LoginCommand;
 import praxis.eventreligi.app.repository.AuthRepositoryInf;
 import praxis.eventreligi.app.model.User;
 
-
 @Controller("/auth")
 public class AuthController {
 
-    private AuthRepositoryInf authRepositoryInf;
+    private AuthRepositoryInf authRepositoryInf;// mengambil repository yang interface
 
     AuthController(AuthRepositoryInf authRepositoryInf) {
         this.authRepositoryInf = authRepositoryInf;
     }
 
     @Get("/")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON) // menyediakan untuk diproses oleh user
     public String index() {
         List<User> user = authRepositoryInf.findAll();
         HashMap<String, Object> data = new HashMap<>();
@@ -41,7 +40,7 @@ public class AuthController {
         // untuk mencegah error saat runtime, kita gunakan try catch
         try {
             Boolean isExistEmail = authRepositoryInf.checkExistEmail(command.getEmail());
-            if (isExistEmail) {
+            if (isExistEmail) {//cek apakah email yang dimasukan ada
                 User user = authRepositoryInf.login(command.getEmail(), command.getPassword());
                 if (user == null) {
                     data.put("status", "gagal");
@@ -103,7 +102,7 @@ public class AuthController {
     @Produces(MediaType.APPLICATION_JSON)
     public String register(@Body User user) {
         HashMap<String, Object> data = new HashMap<>();
-        // cek email, apakah sudah ada di database
+        // cek email, apakah sudah ada di database dengan fungsi isExistEmail
         Boolean isExistEmail = authRepositoryInf.checkExistEmail(user.getEmail());
         if (isExistEmail) {
             data.put("status", "gagal");

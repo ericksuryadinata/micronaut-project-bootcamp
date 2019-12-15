@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: praxis.eventreligi
+---
+testFramework: junit
+sourceLanguage: java
