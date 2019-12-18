@@ -8,14 +8,15 @@ import praxis.eventreligi.model.Event;
 
 public interface EventRepositoryInf {
 
-    // yang di create event bentunya string, event yang ada dimodel.
+    // buat dulu fungsinya yang mau di pakai misal create,read dll
+    // yang di create oleh event bentunya string, sedangkan parameternya event yang ada dimodel.
     String create(Event event);
 
-    // read mencari id di dtabase ketika kita mencari id 1 misal kalau ada berarti
-    // mengembalikan evnt
+    // read mencari id di didalam database, ketika kita mencari id 1 misal kalau ada berarti
+    // mengembalikan event
     Event read(@NotNull int id);
 
-    // ketika ingin mengupdate sebuah event maka yang dikirimkan adalah event
+    // ketika ingin mengupdate sebuah event maka yang dikirimkan adalah event yang berbentuk string
     String update(Event event);
 
     String cancel(@NotNull int id);

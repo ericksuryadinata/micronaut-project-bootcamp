@@ -23,4 +23,5 @@ Yang pasti dibutuhkan yaitu micronaut nya
 ## MEMBUAT SERVICE
 
 1. Pada `root` folder tulis command `mn create-app praxis.religi.auth-service`, folder `auth-service` akan tergenerate
-2. Begitupun selanjutnya untuk service - service yang lain
+2. untuk membuat controller `mn create-controller praxis.religi.controller.AuthController` didalam direktori auth-service
+3. Begitupun selanjutnya untuk service - service yang lain

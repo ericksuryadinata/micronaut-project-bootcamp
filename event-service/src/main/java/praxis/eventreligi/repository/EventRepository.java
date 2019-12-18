@@ -23,8 +23,9 @@ public class EventRepository implements EventRepositoryInf {
         this.entityManager = entityManager;
     }
 
-    // ini implementasi create
-    // persist untuk menambah data di tb
+    // implementasi create yang telah dibuat di dalam model
+    // persist untuk menyetujui adanya penambahan didalam tabel event
+    // try catch fungsinya sama kayak if else
     @Override
     @Transactional
     public String create(Event event) {
@@ -33,12 +34,11 @@ public class EventRepository implements EventRepositoryInf {
             entityManager.persist(event);
             return "sukses";
         } catch (Exception e) {
-            // ini fungsinya sama kayak if else
             return "gagal";
         }
     }
 
-    // ini implementasi read
+    // implementasi read
     // TypedQuery yang dikembalikan read <Event>
     @Override
     @Transactional(readOnly = true)
@@ -50,7 +50,7 @@ public class EventRepository implements EventRepositoryInf {
         return query.getSingleResult();
     }
 
-    // update
+    // implementasi update
     // merge untuk menggabungkan yang sudah ada di tb
     @Override
     @Transactional
